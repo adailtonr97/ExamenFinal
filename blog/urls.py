@@ -1,9 +1,13 @@
 from django.conf.urls import include, url
 from . import views
 
+
 urlpatterns = [
-    url(r'^$', views.post_list),
-    url(r'^pub/(?P<pk>[0-9]+)/$', views.detalle, name='detalle'),
-    url(r'^post/new/$', views.nuevo, name='nuevo'),
+    url(r'^$', views.lista),
+    url(r'^detalle/(?P<pk>[0-9]+)/$', views.detalle, name='detalle'),
+    url(r'^post/nuevo/$', views.nuevo, name='nuevo'),
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.editar, name='editar'),
+    url(r'^borrador/$', views.borrador, name='borrador'),
+    url(r'^post/(?P<pk>\d+)/publish/$', views.publicacion, name='publicacion'),
+    url(r'^post/(?P<pk>\d+)/remove/$', views.eliminar, name='eliminar'),
 ]

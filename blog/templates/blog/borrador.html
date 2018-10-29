@@ -1,13 +1,11 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-{% for post in pub %}
+    {% for post in draft %}
         <div class="post">
-            <div class="date">
-                {{ post.fecha_publicacion }}
-            </div>
+            <p class="date">created: {{ post.fecha_creacion|date:'d-m-Y' }}</p>
             <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.titulo }}</a></h1>
-            <p>{{ post.texto|linebreaksbr }}</p>
+            <p>{{ post.texto|truncatechars:200 }}</p>
         </div>
-{% endfor %}
+    {% endfor %}
 {% endblock %}
