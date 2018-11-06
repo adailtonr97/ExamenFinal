@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Paciente, Doctor
+from django.contrib import messages
+from .models import Paciente, Doctor, Cita
 from .forms import PostForm1, PostForm2
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -41,9 +42,11 @@ def nuevo(request):
         if request.method == "POST":
             form = PostForm1(request.POST)
             if form.is_valid():
-                p = form.save(commit=False)
-                p.save()
-                return redirect('detalle', pk=p.pk)
+                paciente = Paciente.objects.create(nombre_paciente=form.cleaned_data['nombre_paciente'], direccion_paciente=form.cleaned_data['direccion_paciente'], telefono_paciente=form.cleaned_data['telefono_paciente'], correo_paciente=form.cleaned_data['correo_paciente'], sintomas_paciente=form.cleaned_data['sintomas_paciente'] )
+                for doctor_id in request.POST.getlist('doctores'):
+                    citas = Cita(doctor_id=doctor_id, paciente_id = paciente.id)
+                    citas.save()
+                    messages.add_message(request, messages.SUCCESS, 'Cita archivada correctamente')
         else:
             form = PostForm1()
         return render(request, 'blog/editar.html', {'form': form})
@@ -87,10 +90,6 @@ def editar2(request, pk):
         return render(request, 'blog/editar2.html', {'form': form})
 
 
-@login_required
-def borrador(request):
-    draft = Paciente.objects.filter(fecha_publicacion__isnull=True).order_by('fecha_creacion')
-    return render(request, 'blog/borrador.html', {'draft': draft})
 
 @login_required
 def borrador2(request):

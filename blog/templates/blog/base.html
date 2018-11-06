@@ -11,7 +11,6 @@
         <div class="page-header">
         {% if user.is_authenticated %}
           <a href="{% url 'nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-          <a href="{% url 'borrador' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
           <a href="{% url 'lista' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a>
           <p class="top-menu">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesión</a>)</small></p>
         {% else %}
@@ -29,5 +28,13 @@
             </div>
         </div>
     </body>
-
+    <div class="page-header">
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
 </html>
