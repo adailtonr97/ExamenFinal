@@ -1,0 +1,19 @@
+{% extends 'blog/base2.html' %}
+
+{% block content %}
+    <div class="post">
+      {% if det.fecha_publicacion2 %}
+  <div class="date">
+      {{ det.fecha_publicacion2 }}
+  </div>
+{% else %}
+  <a class="btn btn-default" href="{% url 'doctor' pk=det.pk %}">Ingresar</a>
+
+{% endif %}
+
+        <a class="btn btn-default" href="{% url 'editar2' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'eliminar2' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <h1>{{ det.nombre_doctor }}</h1>
+        <p>{{ det.especialidad_doctor|linebreaksbr }}</p>
+    </div>
+{% endblock %}

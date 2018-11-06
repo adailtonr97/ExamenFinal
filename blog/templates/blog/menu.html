@@ -1,9 +1,0 @@
-{% extends 'blog/principal.html' %}
-
-{% block content %}
-    {% for post in draft %}
-        <div class="post">
-          <a href="{% url 'base' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
-        </div>
-    {% endfor %}
-{% endblock %}
