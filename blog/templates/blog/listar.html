@@ -1,13 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-{% for post in pub %}
+{% for post in pac %}
         <div class="post">
             <div class="date">
                 {{ post.fecha_publicacion }}
             </div>
-            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.titulo }}</a></h1>
-            <p>{{ post.texto|linebreaksbr }}</p>
+            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.nombre_paciente }}</a></h1>
+            <p>{{ post.sintomas_paciente|linebreaksbr }}</p>
         </div>
 {% endfor %}
 {% endblock %}

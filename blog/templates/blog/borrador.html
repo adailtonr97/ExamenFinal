@@ -4,8 +4,8 @@
     {% for post in draft %}
         <div class="post">
             <p class="date">created: {{ post.fecha_creacion|date:'d-m-Y' }}</p>
-            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.titulo }}</a></h1>
-            <p>{{ post.texto|truncatechars:200 }}</p>
+            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.nombre_paciente }}</a></h1>
+            <p>{{ post.sintomas_paciente|truncatechars:200 }}</p>
         </div>
     {% endfor %}
 {% endblock %}

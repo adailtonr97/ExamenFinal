@@ -1,7 +1,7 @@
 from django import forms
-from .models import Publicacion
+from .models import Paciente
 
-class PostForm(forms.ModelForm):
+class PostForm1(forms.ModelForm):
         class Meta:
-            model = Publicacion
-            fields = ('titulo', 'texto',)
+            model = Paciente
+            fields = ('nombre_paciente', 'direccion_paciente', 'telefono_paciente', 'correo_paciente','sintomas_paciente')
