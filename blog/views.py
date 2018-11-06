@@ -20,7 +20,7 @@ def base2(request):
 
 
 def lista(request):
-    pac = Paciente.objects.filter(fecha_publicacion__lte=timezone.now()).order_by('fecha_publicacion')
+    pac = Cita.objects.filter(fecha_cita__lte=timezone.now()).order_by('fecha_cita')
     return render(request, 'blog/listar.html', {'pac': pac})
 
 def lista2(request):
@@ -88,13 +88,6 @@ def editar2(request, pk):
         else:
             form = PostForm2(instance=post)
         return render(request, 'blog/editar2.html', {'form': form})
-
-
-
-@login_required
-def borrador2(request):
-    draft = Doctor.objects.filter(fecha_publicacion2__isnull=True).order_by('fecha_creacion2')
-    return render(request, 'blog/borrador2.html', {'draft': draft})
 
 
 @login_required

@@ -4,6 +4,7 @@
     <h1>Nuevo Paciente</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Guardar</button>
+        <button type="submit" class="button" class="save btn btn-default">Guardar</button>
+        <a href="{% url 'base' %}"  class="btn btn-success">Regresar</a>
     </form>
 {% endblock %}

@@ -11,9 +11,9 @@
 
 {% endif %}
 
-        <a class="btn btn-default" href="{% url 'editar' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'eliminar' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        <h1>{{ det.nombre_paciente }}</h1>
-        <p>{{ det.sintomas_paciente|linebreaksbr }}</p>
+        <a class="btn btn-default" class="button" href="{% url 'editar' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" class="button" href="{% url 'eliminar' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <h1>{{ det.paciente }}</h1>
+        <p>{{ det.doctor|linebreaksbr }}</p>
     </div>
 {% endblock %}

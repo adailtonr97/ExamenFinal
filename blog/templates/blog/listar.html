@@ -6,8 +6,9 @@
             <div class="date">
                 {{ post.fecha_publicacion }}
             </div>
-            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.nombre_paciente }}</a></h1>
-            <p>{{ post.sintomas_paciente|linebreaksbr }}</p>
+            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.paciente }}</a></h1>
+            <p>{{ post.doctor|linebreaksbr }}</p>
         </div>
 {% endfor %}
+<a href="{% url 'base' %}"  class="btn btn-success">Regresar</a>
 {% endblock %}

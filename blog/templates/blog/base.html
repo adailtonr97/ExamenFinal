@@ -4,7 +4,7 @@
             <title>Pacientes</title>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <link rel="stylesheet" href="{% static 'cod/blo.css' %}">
             <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         </head>
         <body>
@@ -12,7 +12,7 @@
         {% if user.is_authenticated %}
           <a href="{% url 'nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
           <a href="{% url 'lista' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a>
-          <p class="top-menu">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesión</a>)</small></p>
+          <p class="top-menu1"> Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesión</a>)</small></p>
         {% else %}
           <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
@@ -23,6 +23,7 @@
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
+                
                 {% endblock %}
                 </div>
             </div>

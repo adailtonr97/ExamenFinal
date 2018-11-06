@@ -4,15 +4,15 @@
             <title>Hospital La Esperanza</title>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <link rel="stylesheet" href="{% static 'cod/blo.css' %}">
             <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         </head>
         <body>
         <div class="page-header">
         {% if user.is_authenticated %}
-          <p class="top-menu">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesión</a>)</small></p>
+          <p class="top-menu1">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesión</a>)</small></p>
         {% else %}
-          <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+          <a href="{% url 'login' %}"  class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
 
             <h1><a href="/">Hospital La Esperanza</a></h1>
@@ -21,13 +21,13 @@
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
-                <a href="{% url 'base' %}" style="font-size: 60px"><span class="glyphicon glyphicon-user"> Pacientes</span></a>
+                <a href="{% url 'base' %}"  class=top-list style="font-size: 60px"><span class="glyphicon glyphicon-user"> Pacientes</span></a>
                 <br>
                 <br>
-                <a href="{% url 'base2' %}" style="font-size: 60px"><span class="glyphicon glyphicon-user"> Doctores</span></a>
+                <a href="{% url 'base2' %}" class=top-list style="font-size: 60px"><span class="glyphicon glyphicon-user"> Doctores</span></a>
                 <br>
                 <br>
-                <a href="{% url 'base2' %}" style="font-size: 60px"><span class="glyphicon glyphicon-book"> Citas</span></a>
+                <a href="{% url 'base2' %}" class=top-list style="font-size: 60px"><span class="glyphicon glyphicon-book"> Citas</span></a>
                 {% endblock %}
                 </div>
             </div>

@@ -11,8 +11,8 @@
 
 {% endif %}
 
-        <a class="btn btn-default" href="{% url 'editar2' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'eliminar2' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn btn-default" class="button" href="{% url 'editar2' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" class="button" href="{% url 'eliminar2' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         <h1>{{ det.nombre_doctor }}</h1>
         <p>{{ det.especialidad_doctor|linebreaksbr }}</p>
     </div>
