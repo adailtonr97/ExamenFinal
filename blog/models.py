@@ -32,6 +32,7 @@ class Paciente(models.Model):
         fecha_publicacion = models.DateTimeField(
                 blank=True, null=True)
         doctores = models.ManyToManyField(Doctor, through='Cita')
+
         def publish(self):
             self.fecha_publicacion = timezone.now()
             self.save()

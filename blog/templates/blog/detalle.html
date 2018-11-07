@@ -7,13 +7,15 @@
       {{ det.fecha_publicacion }}
   </div>
 {% else %}
-  <a class="btn btn-default" href="{% url 'paciente' pk=det.pk %}">Ingresar</a>
 
 {% endif %}
 
         <a class="btn btn-default" class="button" href="{% url 'editar' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-default" class="button" href="{% url 'eliminar' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        <h1>{{ det.paciente }}</h1>
-        <p>{{ det.doctor|linebreaksbr }}</p>
+        <h1>{{ det.nombre_paciente }}</h1>
+        <p>{{ det.sintomas_paciente|linebreaksbr }}</p>
+        <p>{{ det.direccion_paciente|linebreaksbr }}</p>
+        <p>{{ det.telefono_paciente|linebreaksbr }}</p>
+        <p>{{ det.correo_paciente|linebreaksbr }}</p>
     </div>
 {% endblock %}

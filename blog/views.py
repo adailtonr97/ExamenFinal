@@ -20,7 +20,7 @@ def base2(request):
 
 
 def lista(request):
-    pac = Cita.objects.filter(fecha_cita__lte=timezone.now()).order_by('fecha_cita')
+    pac = Paciente.objects.order_by('fecha_creacion')
     return render(request, 'blog/listar.html', {'pac': pac})
 
 def lista2(request):
@@ -71,7 +71,7 @@ def editar(request, pk):
             if form.is_valid():
                 post = form.save(commit=False)
                 post.save()
-                return redirect('detalle', pk=post.pk)
+                return redirect('lista')
         else:
             form = PostForm1(instance=post)
         return render(request, 'blog/editar.html', {'form': form})
