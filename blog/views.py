@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.contrib import messages
-from .models import Paciente, Doctor, Cita
+from .models import Grado, Materia, Asignacion
 from .forms import PostForm1, PostForm2
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -20,20 +20,20 @@ def base2(request):
 
 
 def lista(request):
-    pac = Paciente.objects.order_by('fecha_creacion')
-    return render(request, 'blog/listar.html', {'pac': pac})
+    gra = Grado.objects.order_by('fecha_creacion')
+    return render(request, 'blog/listar.html', {'gra': gra})
 
 def lista2(request):
-    doc = Doctor.objects.filter(fecha_publicacion2__lte=timezone.now()).order_by('fecha_publicacion2')
-    return render(request, 'blog/listar2.html', {'doc': doc})
+    mat = Materia.objects.filter(fecha_publicacion2__lte=timezone.now()).order_by('fecha_publicacion2')
+    return render(request, 'blog/listar2.html', {'mat': mat})
 
 
 def detalle(request, pk):
-    det = get_object_or_404(Paciente, pk=pk)
+    det = get_object_or_404(Grado, pk=pk)
     return render(request, 'blog/detalle.html', {'det': det})
 
 def detalle2(request, pk):
-    det = get_object_or_404(Doctor, pk=pk)
+    det = get_object_or_404(Materia, pk=pk)
     return render(request, 'blog/detalle2.html', {'det': det})
 
 
@@ -42,11 +42,11 @@ def nuevo(request):
         if request.method == "POST":
             form = PostForm1(request.POST)
             if form.is_valid():
-                paciente = Paciente.objects.create(nombre_paciente=form.cleaned_data['nombre_paciente'], direccion_paciente=form.cleaned_data['direccion_paciente'], telefono_paciente=form.cleaned_data['telefono_paciente'], correo_paciente=form.cleaned_data['correo_paciente'], sintomas_paciente=form.cleaned_data['sintomas_paciente'] )
-                for doctor_id in request.POST.getlist('doctores'):
-                    citas = Cita(doctor_id=doctor_id, paciente_id = paciente.id)
-                    citas.save()
-                    messages.add_message(request, messages.SUCCESS, 'Cita archivada correctamente')
+                grado = Grado.objects.create(nombre_grado=form.cleaned_data['nombre_grado'], seccion_grado=form.cleaned_data['seccion_grado'] )
+                for materia_id in request.POST.getlist('materias'):
+                    asignaciones = Asignacion(materia_id=materia_id, grado_id = grado.id)
+                    asignaciones.save()
+                    messages.add_message(request, messages.SUCCESS, 'Asignacion efectuada correctamente')
         else:
             form = PostForm1()
         return render(request, 'blog/editar.html', {'form': form})
@@ -65,7 +65,7 @@ def nuevo2(request):
 
 @login_required
 def editar(request, pk):
-        post = get_object_or_404(Paciente, pk=pk)
+        post = get_object_or_404(Grado, pk=pk)
         if request.method == "POST":
             form = PostForm1(request.POST, instance=post)
             if form.is_valid():
@@ -78,7 +78,7 @@ def editar(request, pk):
 
 @login_required
 def editar2(request, pk):
-        post = get_object_or_404(Doctor, pk=pk)
+        post = get_object_or_404(Materia, pk=pk)
         if request.method == "POST":
             form = PostForm2(request.POST, instance=post)
             if form.is_valid():
@@ -92,13 +92,13 @@ def editar2(request, pk):
 
 @login_required
 def paciente(request, pk):
-    pu = get_object_or_404(Paciente, pk=pk)
+    pu = get_object_or_404(Grado, pk=pk)
     pu.publish()
     return redirect('detalle', pk=pk)
 
 @login_required
 def doctor(request, pk):
-    do = get_object_or_404(Doctor, pk=pk)
+    do = get_object_or_404(Materia, pk=pk)
     do.publish()
     return redirect('detalle2', pk=pk)
 
@@ -115,12 +115,12 @@ def publish2(self):
 
 @login_required
 def eliminar(request, pk):
-    rv = get_object_or_404(Paciente, pk=pk)
+    rv = get_object_or_404(Grado, pk=pk)
     rv.delete()
     return redirect('/')
 
 @login_required
 def eliminar2(request, pk):
-    rv = get_object_or_404(Doctor, pk=pk)
+    rv = get_object_or_404(Materia, pk=pk)
     rv.delete()
     return redirect('/')
