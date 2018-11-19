@@ -14,8 +14,8 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.editar, name='editar'),
     url(r'^post/(?P<pk>[0-9]+)/edit2/$', views.editar2, name='editar2'),
 
-    url(r'^post/(?P<pk>\d+)/publish/$', views.paciente, name='paciente'),
-    url(r'^post/(?P<pk>\d+)/publish2/$', views.doctor, name='doctor'),
+    url(r'^post/(?P<pk>\d+)/publish/$', views.grado, name='grado'),
+    url(r'^post/(?P<pk>\d+)/publish2/$', views.materia, name='materia'),
 
     url(r'^post/(?P<pk>\d+)/remove/$', views.eliminar, name='eliminar'),
     url(r'^post/(?P<pk>\d+)/remove2/$', views.eliminar2, name='eliminar2'),

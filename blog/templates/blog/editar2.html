@@ -1,7 +1,7 @@
 {% extends 'blog/base2.html' %}
 
 {% block content %}
-    <h1>Nuevo Doctor</h1>
+    <h1>Nueva materia</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="button" class="save btn btn-default">Guardar</button>

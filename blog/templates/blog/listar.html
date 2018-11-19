@@ -1,14 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-{% for post in pac %}
+{% for post in gra %}
         <div class="post">
             <div class="date">
                 {{ post.fecha_creacion }}
             </div>
-            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.nombre_paciente }}</a></h1>
-            <p>{{ direccion_paciente|linebreaksbr }}</p>
-            <p>{{ sintomas_paciente|linebreaksbr }}</p>
+            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.nombre_grado }}</a></h1>
+            <p>{{ seccion_grado|linebreaksbr }}</p>
         </div>
 {% endfor %}
 <a href="{% url 'base' %}"  class="btn btn-success">Regresar</a>

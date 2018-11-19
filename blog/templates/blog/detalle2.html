@@ -13,12 +13,9 @@
 
         <a class="btn btn-default" class="button" href="{% url 'editar2' pk=det.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-default" class="button" href="{% url 'eliminar2' pk=det.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-        <h1>{{ det.nombre_doctor }}</h1>
-        <p>{{ det.especialidad_doctor|linebreaksbr }}</p>
-        <p>{{ det.colegiado_doctor|linebreaksbr }}</p>
-        <p>{{ det.direccion_doctor|linebreaksbr }}</p>
-        <p>{{ det.telefono_doctor|linebreaksbr }}</p>
-        <p>{{ det.correo_doctor|linebreaksbr }}</p>
+        <h1>{{ det.nombre_materia }}</h1>
+        <p>{{ det.creditos_materia|linebreaksbr }}</p>
+        <p>{{ det.profesor_materia|linebreaksbr }}</p>
         <a href="{% url 'lista2' %}"  class="btn btn-success">Regresar</a>
     </div>
 {% endblock %}
