@@ -91,13 +91,13 @@ def editar2(request, pk):
 
 
 @login_required
-def paciente(request, pk):
+def grado(request, pk):
     pu = get_object_or_404(Grado, pk=pk)
     pu.publish()
     return redirect('detalle', pk=pk)
 
 @login_required
-def doctor(request, pk):
+def materia(request, pk):
     do = get_object_or_404(Materia, pk=pk)
     do.publish()
     return redirect('detalle2', pk=pk)

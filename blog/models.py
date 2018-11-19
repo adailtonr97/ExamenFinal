@@ -26,7 +26,7 @@ class Grado(models.Model):
                 default=timezone.now)
         fecha_publicacion = models.DateTimeField(
                 blank=True, null=True)
-        materias = models.ManyToManyField(Materia, through='Cita')
+        materias = models.ManyToManyField(Materia, through='Asignacion')
 
         def publish(self):
             self.fecha_publicacion = timezone.now()
@@ -46,7 +46,7 @@ class Asignacion(models.Model):
             self.save()
 
 class AsignacionInLine(admin.TabularInline):
-        model = Cita
+        model = Asignacion
         extra = 1
 
 class MateriaAdmin(admin.ModelAdmin):
